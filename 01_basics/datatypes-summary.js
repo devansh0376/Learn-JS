@@ -20,3 +20,24 @@ const myfun = function()
 {
     console.log("hii");
 }
+
+/*
+********memory in javascript********
+
+Stack(primitive) and heap(non primitive) two type of memory 
+
+ */
+//stack primitive
+let a=5
+let b=a
+b=7 //a's value doesn't change
+// console.log(a)
+// console.log(b)
+
+//heap non-primitive
+let userone={email : "abc@gmail.com", age:12};
+
+usertwo=userone
+usertwo.age=21 //here usertwo pointing to userone by reference so both's age value will change
+console.log(userone.age)
+console.log(usertwo.age)
