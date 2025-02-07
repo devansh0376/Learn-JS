@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chai aur Code | DOM </title>
+</head>
+<body style="background-color: #212121 ; color:#fff">
+    <ul class="language">
+        <li>JavaScript</li>
+    </ul>
+</body>
+<script>
+    // const myul=document.querySelector(".language")
+    // const newlist=document.createElement("li")
+    // newlist.textContent="c++" or newlist.innerHTML = `c++`
+    // myul.appendChild(newlist)
+    function addlist(langName)
+    {
+        const myul=document.querySelector(".language")
+        const newlist=document.createElement("li") 
+        newlist.textContent=`${langName}` // or langName
+        myul.appendChild(newlist)
+    }
+    function addlist_opti(langName)
+    {
+        const newlist=document.createElement("li")
+        newlist.appendChild(document.createTextNode(langName))
+        document.querySelector(".language").appendChild(newlist)
+    }
+    //Edit list
+    const oldList = document.querySelector("li:nth-child(1)");
+    const newList = document.createElement("li");
+    newList.textContent = "SM"; 
+    oldList.replaceWith(newList);
+
+    function editlist(str,n)
+    {
+        const oldList = document.querySelector("li:nth-child(n)");
+        const newList=document.createElement("li")
+        newList.textContent = str
+        oldList.replaceWith(newList)
+    }
+    //remove list 
+    // const lastlist=document.querySelector('li:last-child')
+    // lastlist.remove()
+    function removelist()
+    {
+        const lastlist=document.querySelector('li:last-child')
+        lastlist.remove()
+    }
+
+    addlist("c++")
+    addlist("python")
+    addlist_opti("java")
+    editlist("Javascript",1)
+    removelist()
+    removelist()
+    addlist_opti("python")
+    addlist_opti("java")
+</script>
+</html>
