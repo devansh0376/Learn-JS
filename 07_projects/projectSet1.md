@@ -54,4 +54,34 @@ buttons.forEach
 )
 
 ```
+## project 2
+```javascript 
 
+//here we have to calculate BMI for that we need to fetch height and weight for that we use events then we have to make one function for calculate BMI and we need to display that
+//fetch calculate display
+
+//all things done in form so we select form first
+const form = document.querySelector('form');
+
+form.addEventListener('submit', function (e) {
+  e.preventDefault(); //stop defaul action
+  //we need height and weight
+  const h = parseInt(document.querySelector('#height').value);
+  const w = parseInt(document.querySelector('#weight').value);
+  const res = document.querySelector('#results');
+
+  if (h < 0 || isNaN(h)) 
+  res.innerHTML = `Please enter a valid height`;
+  else if(w<0 || isNaN(w))
+  res.innerHTML = `Please enter a valid weight`;
+  else
+  {
+    const bmi= ( w/((h*h)/10000) ).toFixed(2);
+    //show result
+    res.innerHTML =`<span> ${bmi} </span>`
+  }
+  
+  //res.innerHTML= `${h}`
+});
+
+```
