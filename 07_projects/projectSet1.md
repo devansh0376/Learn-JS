@@ -85,3 +85,20 @@ form.addEventListener('submit', function (e) {
 });
 
 ```
+
+## project 3
+```javascript
+const clock=document.getElementById('clock')
+
+// let date=new Date();
+
+// console.log(date.toLocaleTimeString()); //gives time
+//but here we need to update this time every second so we need to know JS method name setInterval 
+
+//time will update in every 1 sec
+setInterval(function(){
+  let date=new Date();
+  //console.log(date.toLocaleTimeString()); //gives time
+  clock.innerHTML=date.toLocaleTimeString()
+}, 1000) // 1000 mili second=1 second
+```
