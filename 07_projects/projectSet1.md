@@ -102,3 +102,123 @@ setInterval(function(){
   clock.innerHTML=date.toLocaleTimeString()
 }, 1000) // 1000 mili second=1 second
 ```
+
+## project 4 
+```javascript
+
+//we have to generate number between 1 to 100
+let RandomNo=parseInt(Math.random()*100 +1)
+console.log(RandomNo)
+//we have to get the number 
+let guess = document.querySelector('#guessField');
+let submit=document.querySelector('#subt');
+//we have to post(print) msg
+let prevGuess = document.querySelector('.guesses')
+let remGuess= document.querySelector('.lastResult')
+let message = document.querySelector('.msg')
+let startnew =document.querySelector('.resultParas')
+
+
+//this is empty paragraph we will add text in this by JS post
+const p = document.createElement('p');
+//varible for tract the remaining attempt
+let cntGuess=1
+//flag for check we can play or not 
+let playgame=true 
+
+
+//check if we can play or not , if yes then we do all operations
+if(playgame)
+{
+  //check if submit press so we call event 
+  submit.addEventListener('click', function(e)
+    {
+      e.preventDefault(); // stop all operation 
+      const guessNo=parseInt(guess.value)
+      console.log(guessNo)
+      validateNo(guessNo)
+    }
+  )
+}
+//create methods 
+//check the number is bewteen 1 to 100
+function validateNo(guessNo)
+{
+  if(isNaN(guessNo))
+  alert('PLease enter a valid number'); //pop msg
+  else if(guessNo<1)
+  alert('PLease enter a number more than 1');
+  else if(guessNo>100)
+  alert('PLease enter a  number less than 100');
+  else
+  {
+    if(cntGuess>10)
+    {
+      update(guessNo)
+      displayMessage(`Game Over. Random number was ${RandomNo}`);
+      endGame();
+    }
+    else
+    {
+      update(guessNo)
+      checkNo(guessNo)
+    }
+  }
+
+}
+function checkNo(guessNo)
+{
+  if(guessNo > RandomNo)
+  displayMessage(`Number is TOOO High`);
+  else if(guessNo < RandomNo)
+  displayMessage(`Number is TOOO low`);
+  else
+  {
+    displayMessage(`You guessed it right`);
+    endGame();
+  }
+}
+
+function update(guessNo)
+{
+  guess.value=''
+  prevGuess.innerHTML +=`${guessNo}, `;
+  cntGuess++
+  remGuess.innerHTML= `${11 - cntGuess} `;
+}
+
+function displayMessage(msg)
+{
+  message.innerHTML = `<h2>${msg}</h2>`;
+}
+
+function endGame() 
+{
+  guess.value = ''; //refresh game
+  guess.setAttribute('disabled', '');
+  //we add button and text in empty paragraph (post)
+  p.classList.add('button');
+  p.innerHTML = `<h2 id="newGame">Start new Game</h2>`;
+  startnew.appendChild(p);
+  playgame = false;
+  newGame();
+}
+
+
+function newGame()
+{
+  const newGameButton = document.querySelector('#newGame');
+  newGameButton.addEventListener('click', function (e)
+  {
+    //reset all value
+    RandomNo=parseInt(Math.random()*100 +1)
+    prevGuess.innerHTML=''
+    cntGuess=1
+    remGuess.innerHTML= `${11 - cntGuess} `;
+    guess.removeAttribute('disabled')
+    startnew.removeChild(p);
+    playgame=true
+  }
+  )
+}
+```
