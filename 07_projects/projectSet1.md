@@ -272,6 +272,7 @@ let intervalID;
 
 
 ```
+## project 6
 ```javascript
 const insert = document.getElementById('insert');
 
