@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Chai Aur Code</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+    <br><br>
+    <h1 id="change">No button Active</h1>
+    <br><br>
+    <button id="start2">Start2</button>
+    <button id="stop2">Stop2</button>
+</body>
+<script>
+    const fun=function(){
+        console.log("2 sec")
+    }
+    //we want to change text after 2 second
+    const changetext=function(){ document.querySelector('h1').innerHTML="mast JS"}
+
+    const changeMe=setTimeout(changetext, 2000);
+    //Now we want to stop this change text so we use cleartimeout
+    document.querySelector('#stop').addEventListener('click' , function() { clearTimeout(changeMe) 
+        console.log("Stopped")
+    }
+    )
+    setTimeout(fun, 2000);
+    //we need to print text after some interval like every second
+    const sayname=function(str){
+        console.log(str,Date.now())
+    }
+    let intervalID;
+    //start printing when start2 button pressed
+    document.querySelector('#start2').addEventListener('click',function()
+    {
+        if (!intervalID)
+        {
+            intervalID = setInterval(sayname, 1000, "str");
+            document.querySelector('#change').innerHTML="start 2 is active"
+        }
+    }
+    )
+    //stop printing when stop2 button pressed
+    document.querySelector('#stop2').addEventListener('click',function()
+    {
+        clearInterval(intervalID)
+        document.querySelector('#change').innerHTML="stop 2 is active"
+        intervalID = null; // Reset intervalID to allow restarting
+    }
+)
+    
+</script>
+</html>
