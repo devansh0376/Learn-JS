@@ -222,3 +222,53 @@ function newGame()
   )
 }
 ```
+## project5
+```javascript 
+
+// //we want to change color to white when start is pressed
+// document.querySelector("#start").addEventListener('click', function(){
+//   document.querySelector('body').style.backgroundColor = "#ffffff";
+// }) 
+// //we want to change bg color to grey when stop is pressed
+// document.querySelector("#stop").addEventListener('click', function(){
+//   document.querySelector('body').style.backgroundColor = "#212121";
+// }) 
+
+//here we want that when we presss start background color should change every second and when i press stop it should stop
+const randomColor=function()
+ {
+   let color="#"
+   const hex='0123456789ABCDEF'
+   for(let i=0;i<6;i++)
+   {
+     color+=hex[Math.floor(Math.random()*16)]
+   }
+   return color
+ }
+const myColor=function changeColor()
+{
+  let RC=randomColor()
+  document.querySelector('body').style.backgroundColor=RC
+}
+
+let intervalID;
+
+//start color change
+ document.querySelector("#start").addEventListener('click',function()
+ {
+   if(!intervalID)
+   intervalID=setInterval(myColor,1500)
+ }
+ )
+
+ //stop color change
+ document.querySelector("#stop").addEventListener('click',function()
+ {
+   clearInterval(intervalID)
+   document.querySelector('body').style.backgroundColor = "#212121"; // Grey
+   intervalID=null
+ } 
+ )
+
+
+```
