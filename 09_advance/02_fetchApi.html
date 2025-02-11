@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch Example</title>
+</head>
+<body style="background-color: #212121; color: white; text-align: center; font-family: Arial;">
+    
+    <h1>GitHub Information</h1>
+    <input type="text" id="userName" placeholder="Enter GitHub Username">
+    <button id="fetchUser">Get Information</button>
+    <div id="userInfo"></div>
+
+    <script>
+        async function fetchGitHubUser() 
+        {
+            try 
+            {
+                // Fetch data from GitHub API
+                let username = document.querySelector("#userName").value.trim();
+                const response = await fetch(`https://api.github.com/users/${username}`);
+                const user = await response.json(); // Convert response to JSON
+    
+                // Update the HTML with user info
+                document.getElementById("userInfo").innerHTML = `
+                    <h2>${user.login}</h2>
+                    <img src="${user.avatar_url}" alt="User Image" width="150px" style="border-radius:50%;">
+                    <p>Public Repos: ${user.public_repos}</p>
+                    <p>Location: ${user.location || "Not Available"}</p>
+                `;
+            } 
+            catch (error) 
+            {
+                console.log("Error fetching user:", error);
+                document.getElementById("userInfo").innerHTML = `<p>Error fetching data.</p>`;
+            }
+        }
+    
+        // Attach event listener to button
+        document.getElementById("fetchUser").addEventListener("click", fetchGitHubUser);
+    </script>
+    
+
+</body>
+</html>
