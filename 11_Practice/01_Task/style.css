@@ -1,0 +1,16 @@
+body{
+    background-color: #212121;
+}
+#tit,#txt
+{
+    color: aliceblue;
+}
+#num
+{
+    border-radius: 10px;
+    background-color: aquamarine;
+    align-items: center;
+}
+button:hover {
+    background-color: #0056b3;
+}
